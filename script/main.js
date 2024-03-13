@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const itemList = document.querySelectorAll('#nav ul li');
-    
+
     userPage = localStorage.getItem('page');
 
     changePage(userPage);
@@ -37,4 +37,27 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    // Efecto de blur de la navbar al hacer scroll
+
+    window.addEventListener('scroll', function () {
+        const nav = document.querySelector('#nav');
+
+        if (window.scrollY > 150) {
+            nav.style.opacity = 0.3;
+
+            nav.addEventListener('mouseover', function () {
+                nav.style.opacity = 1;
+                nav.style.backgroundColor = '#fff';
+            });
+
+            if (window.scrollY > 300) {
+                nav.style.opacity = 0;
+            }
+            
+        } else { 
+            nav.style.opacity = 1; 
+            nav.style.backgroundColor = 'transparent';
+        }
+    });
 });
