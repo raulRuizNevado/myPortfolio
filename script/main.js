@@ -1,20 +1,40 @@
 document.addEventListener('DOMContentLoaded', function () {
-    document.querySelector('#nav a:first-child').classList.add('active');
-    document.getElementById('prevSection').style.pointerEvents = 'none',
-        document.getElementById('prevSection').style.opacity = '0.2';
-        
-    document.getElementById('nextSection').addEventListener('click', function () {
+    const itemList = document.querySelectorAll('#nav ul li');
+    
+    userPage = localStorage.getItem('page');
 
-        currentElement = document.getElementById('header');
+    changePage(userPage);
 
-        currentElement.style.pointerEvents = 'none',
-            currentElement.style.opacity = '0',
-            currentElement.style.transform = 'translateY(-30%)';
-        
-        
+    // Cambiar el elemento del menu activo al pulsar
 
-        setTimeout(function () {
-            currentElement.remove;
-        }, 900);
+    itemList.forEach(item => {
+        item.addEventListener('click', function () {
+            itemList.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            this.classList.add('active');
+            changePage(this.id);
+            localStorage.setItem('page', this.id);
+        });
     });
+
+    // Cambiar contenido de la pagina inyectando las diferentes paginas
+
+    function changePage(url) {
+
+        pageUrl = 'pages/' + url + '.html';
+
+        fetch(pageUrl)
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#content').innerHTML = data;
+            });
+
+        itemList.forEach(item => {
+            if (item.id == url) {
+                item.classList.add('active');
+            }
+        });
+    }
 });

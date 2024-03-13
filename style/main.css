@@ -2,11 +2,13 @@
 
 body {
     font-family: "Montserrat", sans-serif;
-    background-color: #000;
-    color: #fff;
-    overflow: hidden;
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 h1 {
@@ -20,65 +22,75 @@ h2,h3,h4,h5 {
 
 
 .header {
-    position: relative; /* Esto es para que los div del fondo sean absolutos respecto al header */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 75vh;
-    text-align: center;
-    overflow: hidden;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -1;
     transition: transform 1s, opacity 0.9s;
 }
 
+.main-header {
+    background-image: url(../src/header.png); 
+}
+
 .nav {
-    padding: 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
     display: flex;
-    flex-direction: row;
-    gap: 1rem;
     justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    backdrop-filter: blur(5px);
+    padding: 0.5rem;
 
-    & a {
-        color: #fff;
-        text-decoration: none;
-        opacity: 0.6;
+    & ul {
+        display: flex;
+        gap: 1rem;
+        list-style: none;
+        padding: 0px;
 
-        transition: opacity 0.3s;
+        & li {
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s, font-weight 0.3s;
 
-        &:hover {
-            opacity: 1;
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 }
 
 .active {
     opacity: 1 !important;
+    font-weight: bold;
 }
 
-.section-button {
-    position: absolute;
-    bottom: 3rem;
-    right: 0%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
-
-    & i {
-        opacity: 0.6;
-        transition: opacity 0.3s, transform 0.3s;
-        cursor: pointer;
-    }
-
-    & i:hover {
-        opacity: 1;
-        transform: translate(0, 5px);
-    }
+.content {
+    width: 70vw;
+    margin: 5vh auto;
 }
 
-.about-me {
+.projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 4rem;
+}
+
+.card {
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    padding: 1rem;
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    
+    flex-direction: column;
+    gap: 1rem;
 }
