@@ -7,7 +7,7 @@
   --js-bg: #f0db4f;
   --php-bg: #8d96c0;
   --sql-bg: #00758f;
-  --laravel-bg: #dd4b25;
+  --laravel-bg: #ee4423;
 }
 
 body {
@@ -25,6 +25,7 @@ body {
 h1 {
   font-size: 5rem;
   font-weight: 200;
+  margin-block-end: 0;
 }
 
 h2,
@@ -177,13 +178,13 @@ h5 {
   height: 100%;
 }
 
-.lang-legend {
+#lang-legend {
   position: absolute;
-  bottom: 1rem;
   left: 3rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-top: 1.5rem;
 
   & span {
     display: flex;
@@ -197,3 +198,4 @@ h5 {
   width: 1.5rem;
   height: 2px;
 }
+

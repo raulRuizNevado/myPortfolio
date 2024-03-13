@@ -42,21 +42,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.addEventListener('scroll', function () {
         const nav = document.querySelector('#nav');
+        const langLegend = document.querySelector('#lang-legend');
 
         if (window.scrollY > 150) {
             nav.style.opacity = 0.3;
 
             nav.addEventListener('mouseover', function () {
-                nav.style.opacity = 1;
-                nav.style.backgroundColor = '#fff';
+                if (window.scrollY > 150) {
+                    nav.style.opacity = 1;
+                    nav.style.backgroundColor = '#fff';
+                }
             });
 
             if (window.scrollY > 300) {
                 nav.style.opacity = 0;
             }
-            
-        } else { 
-            nav.style.opacity = 1; 
+
+        } else {
+            nav.style.opacity = 1;
+            nav.style.backgroundColor = 'transparent';
+        }
+
+        if (window.scrollY == 0) {
+            nav.style.opacity = 1;
             nav.style.backgroundColor = 'transparent';
         }
     });
